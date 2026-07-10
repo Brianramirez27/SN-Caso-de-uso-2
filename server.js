@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const conectarDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 
 // Instancia principal de la aplicacion Express
 const app = express();
@@ -14,6 +15,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.json({ mensaje: 'Servicio de Registro/Login funcionando' });
 });
+
+// Rutas de autenticacion (registro y login) montadas bajo el prefijo /api
+app.use('/api', authRoutes);
 
 const PORT = process.env.PORT || 3000;
 
