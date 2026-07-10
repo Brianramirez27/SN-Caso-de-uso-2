@@ -1,0 +1,8 @@
+# Dependencias instaladas por npm
+node_modules/
+
+# Variables de entorno reales (contienen credenciales, no se suben a GitHub)
+.env
+
+# Logs
+npm-debug.log*

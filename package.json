@@ -1,0 +1,20 @@
+{
+  "name": "sn-caso-de-uso-2",
+  "version": "1.0.0",
+  "description": "Servicio web con endpoints de Registro y Login usando Node.js, Express y MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
