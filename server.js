@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const conectarDB = require('./config/db');
 
 // Instancia principal de la aplicacion Express
 const app = express();
@@ -16,6 +17,15 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en el puerto ${PORT}`);
-});
+// Primero se conecta a la base de datos y solo despues se levanta el servidor,
+// para evitar recibir peticiones sin tener acceso a MongoDB
+conectarDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Servidor escuchando en el puerto ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('No se pudo conectar a MongoDB:', error.message);
+    process.exit(1);
+  });
