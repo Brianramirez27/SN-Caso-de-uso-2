@@ -54,7 +54,7 @@ async function login(req, res) {
     const contrasenaValida = await bcrypt.compare(contrasena, usuarioEncontrado.contrasenaHash);
 
     if (!contrasenaValida) {
-      return res.status(401).json({ mensaje: 'error de autenticación' });
+      return res.status(401).json({ mensaje: 'La contraseña es incorrecta' });
     }
 
     return res.status(200).json({ mensaje: 'autenticación satisfactoria' });
